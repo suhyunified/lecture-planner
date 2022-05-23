@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { COLOR } from '.'
 
 type Button = {
   width?: string | number
@@ -12,7 +13,7 @@ export const Button = styled.button<Button>`
 
   height: 48px;
   width: min(100%, 320px);
-  background-color: var(--primary-90);
+  background-color: ${COLOR.PRIMARY};
 
   padding: 16px;
   color: var(--white);

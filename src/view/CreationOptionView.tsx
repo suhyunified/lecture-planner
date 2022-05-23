@@ -5,11 +5,12 @@ import { FloatingButton } from '@/components/Styled/Button'
 
 const CreationOptionView = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+
   width: 100%;
-  min-height: calc(100vh - 50px);
   height: auto;
+  min-height: calc(100vh - 50px);
 `
 
 const CreationTitle = styled.div`

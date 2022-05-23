@@ -23,14 +23,14 @@ export default () => {
     <CreationOption>
       <Option>
         <Text>저는</Text>
-        <Text color={COLOR.PRIMARY90} weight={WEIGHT.BOLD}>
+        <Text color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
           세종대학교
         </Text>
         <Text>학생입니다.</Text>
       </Option>
       <Option>
         <Text>전공은</Text>
-        <Text color={COLOR.PRIMARY90} weight={WEIGHT.BOLD}>
+        <Text color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
           컴퓨터공학과
         </Text>
         <Text>입니다.</Text>
@@ -41,12 +41,12 @@ export default () => {
       </Option>
       <Option>
         <Text>최소</Text>
-        <Text color={COLOR.PRIMARY90} weight={WEIGHT.BOLD}>
+        <Text color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
           16
         </Text>
         <Text>학점,</Text>
         <Text>최대</Text>
-        <Text color={COLOR.PRIMARY90} weight={WEIGHT.BOLD}>
+        <Text color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
           20
         </Text>
         <Text>학점을</Text>

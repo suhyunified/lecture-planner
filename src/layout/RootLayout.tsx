@@ -8,7 +8,7 @@ const RootDiv = styled.div`
 
   min-width: 100vw;
   min-height: 100vh;
-  background-color: var(--gray-f7);
+  background-color: var(--background);
 `
 
 const InnerDiv = styled.div`
@@ -21,7 +21,7 @@ const InnerDiv = styled.div`
   width: 100vw;
   height: fit-content;
 
-  max-width: 1000px;
+  max-width: 1400px;
   min-height: 100vh;
 `
 
