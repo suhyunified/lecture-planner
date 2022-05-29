@@ -2,19 +2,14 @@ import styled from 'styled-components'
 import { COLOR } from '../Styled'
 
 const ScheduleTimeColumn = styled.div`
-  position: absolute;
-  top: 0;
-  left: -30px;
-
   display: flex;
   flex-direction: column;
   gap: 1px;
+  z-index: 1;
 
   width: 30px;
-
-  height: 100%;
-  color: ${COLOR.GRAY40};
   font-size: 10px;
+  color: ${COLOR.GRAY40};
 `
 
 const TimeHeader = styled.div`
@@ -40,7 +35,7 @@ export default () => {
     <ScheduleTimeColumn>
       <TimeHeader></TimeHeader>
       {timeList.map((time) => (
-        <TimeCell>{time}</TimeCell>
+        <TimeCell key={`time-${time}`}>{time}</TimeCell>
       ))}
     </ScheduleTimeColumn>
   )

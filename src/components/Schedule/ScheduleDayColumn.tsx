@@ -5,6 +5,7 @@ import { COLOR } from '../Styled'
 type Props = {
   day: string
   lectures: LectureInfo[]
+  className?: string
 }
 
 const ScheduleDayColumn = styled.div`
@@ -34,16 +35,17 @@ export default (props: Props) => {
   return (
     <ScheduleDayColumn>
       <ScheduleDayHeader>{props.day}</ScheduleDayHeader>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
-      <ScheduleCell></ScheduleCell>
+
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
+      <ScheduleCell className="cell"></ScheduleCell>
     </ScheduleDayColumn>
   )
 }

@@ -14,6 +14,11 @@ export const Button = styled.button<Button>`
   height: 48px;
   width: min(100%, 500px);
   background-color: ${COLOR.PRIMARY};
+  &:hover {
+    background-color: ${COLOR.VIOLET};
+  }
+
+  transition-duration: 0.3s;
 
   padding: 16px;
   color: var(--white);
