@@ -12,7 +12,7 @@ export const Button = styled.button<Button>`
   justify-content: center;
 
   height: 48px;
-  width: min(100%, 320px);
+  width: min(100%, 500px);
   background-color: ${COLOR.PRIMARY};
 
   padding: 16px;
@@ -36,16 +36,17 @@ const FloatingButtonWrapper = styled.div`
 `
 
 const UILink = styled(Link)`
-  width: min(100%, 320px);
+  width: 100%;
+  color: var(--white);
   text-decoration: none;
 `
 
 export const FloatingButton = ({ to, children }: FloatingButtonProps) => (
   <FloatingButtonWrapper>
     {to ? (
-      <UILink to={to}>
-        <Button>{children}</Button>
-      </UILink>
+      <Button>
+        <UILink to={to}>{children}</UILink>
+      </Button>
     ) : (
       <Button>{children}</Button>
     )}

@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { COLOR } from '../Styled'
 
 const ScheduleTable = styled.div`
+  position: sticky;
+  top: 70px;
   flex: 1;
   width: min(100%, 400px);
   height: 400px;

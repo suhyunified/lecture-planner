@@ -1,11 +1,11 @@
 import CreationLectureOption from '@/components/Creation/CreationLectureOption'
 import ScheduleTable from '@/components/Schedule/ScheduleTable'
+import { Button, FloatingButton } from '@/components/Styled/Button'
 import styled from 'styled-components'
 
 const CreationLectureView = styled.div`
   display: flex;
   gap: 20px;
-  padding: 20px 0;
   height: 100%;
 
   @media screen and (max-width: 900px) {
@@ -36,6 +36,9 @@ export default () => {
       </Section>
       <Section maxWidth="500px">
         <CreationLectureOption></CreationLectureOption>
+        <FloatingButton>
+          <span>강의 추가하기</span>
+        </FloatingButton>
       </Section>
     </CreationLectureView>
   )
