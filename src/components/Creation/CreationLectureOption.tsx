@@ -3,14 +3,26 @@ import { Segment } from '@/components/Styled/Segment'
 import { Tab, TabList } from '@/components/Styled/Tab'
 import LectureSegment from '../Schedule/LectureSegment'
 import { LectureInfo } from '@/types/lecture.types'
+import { useState } from 'react'
 
-const CreationLectureOption = styled.div``
+const CreationLectureOption = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 500px);
+`
+
+const CreationLectureInner = styled.div``
+
 const LectureList = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 8px 0;
+
   gap: 8px;
+
+  padding: 8px 0;
 `
+
+const style = { width: 'min(100%, 500px)' }
 
 export default () => {
   const dummy = {
@@ -106,16 +118,41 @@ export default () => {
       ],
     },
   ]
+
+  const [activeTab, setActiveTab] = useState<number>(1)
+  const tabs = [
+    {
+      text: '필수 강의',
+      value: 1,
+    },
+    {
+      text: '선택 강의',
+      value: 2,
+    },
+    {
+      text: '직접 추가',
+      value: 3,
+    },
+  ]
+
   return (
     <CreationLectureOption>
-      <TabList>
-        <Tab active>필수 강의</Tab>
-        <Tab>선택 강의</Tab>
-        <Tab>직접 추가</Tab>
+      <TabList fluid>
+        {tabs.map((tab) => (
+          <Tab
+            active={activeTab === tab.value}
+            onClick={() => setActiveTab(tab.value)}
+          >
+            {tab.text}
+          </Tab>
+        ))}
       </TabList>
       <LectureList>
         {lectures.map((lecture: LectureInfo) => (
-          <LectureSegment lecture={lecture}></LectureSegment>
+          <LectureSegment
+            detail={activeTab === 1}
+            lecture={lecture}
+          ></LectureSegment>
         ))}
       </LectureList>
     </CreationLectureOption>

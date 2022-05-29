@@ -82,18 +82,17 @@ export default ({ detail = true, ...props }: LectureSegmentProps) => {
           {lecture.applyCredit}학점
         </Text>
       </FlexDiv>
-      {detail && (
-        <FlexDiv>
-          <LectureInfoDiv>
-            <Text>교수명</Text>
-            <Text>
-              {lecture.code}
-              {lecture.classNumber && '-' + lecture.classNumber}
-            </Text>
-          </LectureInfoDiv>
-          <TimeTable timetables={lecture.timetables}></TimeTable>
-        </FlexDiv>
-      )}
+
+      <FlexDiv>
+        <LectureInfoDiv>
+          {detail && <Text>교수명</Text>}
+          <Text>
+            {lecture.code}
+            {detail && lecture.classNumber && '-' + lecture.classNumber}
+          </Text>
+        </LectureInfoDiv>
+        {detail && <TimeTable timetables={lecture.timetables}></TimeTable>}
+      </FlexDiv>
     </LectureSegment>
   )
 }

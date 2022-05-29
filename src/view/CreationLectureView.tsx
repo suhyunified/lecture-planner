@@ -16,7 +16,10 @@ const CreationLectureView = styled.div`
 type SectionProps = {
   maxWidth?: string
 }
+
 const Section = styled.div<SectionProps>`
+  display: flex;
+  justify-content: center;
   flex: 1;
   height: 100%;
   max-width: ${(props) => props.maxWidth ?? 'none'};
@@ -31,7 +34,7 @@ export default () => {
       <Section>
         <ScheduleTable></ScheduleTable>
       </Section>
-      <Section maxWidth="600px">
+      <Section maxWidth="500px">
         <CreationLectureOption></CreationLectureOption>
       </Section>
     </CreationLectureView>

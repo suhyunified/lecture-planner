@@ -1,10 +1,16 @@
 import styled from 'styled-components'
 import { COLOR } from '.'
 
-export const TabList = styled.ul`
+type TabListProps = {
+  fluid?: boolean
+}
+
+export const TabList = styled.ul<TabListProps>`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  ${(props) => props.fluid && { width: '100%' }}
 `
 
 type TabProps = {

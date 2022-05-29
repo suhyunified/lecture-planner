@@ -2,7 +2,7 @@ export type LectureInfo = {
   id: number
 
   /** 학과 */
-  department: string
+  department?: string
 
   /** 학수번호 */
   code: string
@@ -11,10 +11,10 @@ export type LectureInfo = {
   name: string
 
   /** 분반 */
-  classNumber: number
+  classNumber?: number
 
   /**  */
-  type: string
+  type?: string
 
   /** 학년 */
   targetYear: number
@@ -23,10 +23,10 @@ export type LectureInfo = {
   applyCredit: number
 
   /** 언어 */
-  language: string
+  language?: string
 
   /** 시간표 */
-  timetables: TimeTableType[]
+  timetables?: TimeTableType[]
 }
 
 export type TimeTableType = {
