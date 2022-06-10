@@ -1,6 +1,9 @@
 import CreationLectureOption from '@/components/Creation/CreationLectureOption'
+import AddLectureModal from '@/components/Creation/Modal/LectureInfoModal'
+import { modals } from '@/components/Modal/Modals'
 import ScheduleTable from '@/components/Schedule/ScheduleTable'
 import { Button, FloatingButton } from '@/components/Styled/Button'
+import useModals from '@/hook/useModal'
 import styled from 'styled-components'
 
 const CreationLectureView = styled.div`

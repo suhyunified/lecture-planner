@@ -6,8 +6,9 @@ import CreationOptionView from '@/view/CreationOptionView'
 const CreationLayout = styled.div`
   display: flex;
   position: relative;
+
   width: 100%;
-  padding: 0 16px;
+  padding: 0 20px;
   flex-direction: column;
 `
 

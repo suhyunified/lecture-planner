@@ -1,13 +1,15 @@
+import Modals from '@/components/Modal/Modals'
 import styled from 'styled-components'
 
 const RootDiv = styled.div`
   display: flex;
 
-  align-items: center;
   justify-content: center;
 
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  overflow: overlay;
+
   background-color: var(--background);
 `
 
@@ -27,9 +29,12 @@ const InnerDiv = styled.div`
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <RootDiv>
-      <InnerDiv>{children}</InnerDiv>
-    </RootDiv>
+    <>
+      <Modals></Modals>
+      <RootDiv>
+        <InnerDiv>{children}</InnerDiv>
+      </RootDiv>
+    </>
   )
 }
 

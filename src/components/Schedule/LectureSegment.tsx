@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { Segment } from '../Styled/Segment'
 import { LectureInfo, TimeTableType } from '@/types/lecture.types'
 import { COLOR, Text, WEIGHT } from '../Styled'
+import { modals } from '../Modal/Modals'
+import useModals from '@/hook/useModal'
 
 const LectureSegment = styled(Segment)`
   display: flex;
@@ -73,9 +75,15 @@ type LectureSegmentProps = {
 }
 
 export default ({ detail = true, ...props }: LectureSegmentProps) => {
+  const { openModal, closeModal } = useModals()
+  const openLectureDetailInfoModal = (lecture: LectureInfo) => {
+    // @ts-ignore
+    openModal(modals.lectureInfoModal, { lecture })
+  }
+
   const { lecture } = props
   return (
-    <LectureSegment>
+    <LectureSegment onClick={() => openLectureDetailInfoModal(lecture)}>
       <FlexDiv>
         <Text size={10}>{lecture.name}</Text>
         <Text size={9} color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
@@ -91,7 +99,9 @@ export default ({ detail = true, ...props }: LectureSegmentProps) => {
             {detail && lecture.classNumber && '-' + lecture.classNumber}
           </Text>
         </LectureInfoDiv>
-        {detail && <TimeTable timetables={lecture.timetables}></TimeTable>}
+        {detail && (
+          <TimeTable timetables={lecture.timetables ?? []}></TimeTable>
+        )}
       </FlexDiv>
     </LectureSegment>
   )

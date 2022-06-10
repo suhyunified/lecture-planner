@@ -1,0 +1,42 @@
+.ReactModal__Overlay {
+  display: flex;
+  align-items: center;
+  justify-content:  center;
+
+  z-index: 100;
+  background-color: #00000000 !important;
+  transition: background 300ms;
+
+  &--after-open {
+    background-color: #000000AA !important;
+  }
+
+  &--before-open {
+    background-color: #000000AA !important;
+  }
+}
+
+.ReactModal__Content {
+  position: relative !important;
+  left: 0 !important;
+  
+  min-width: 400px;
+  height: fit-content;
+  width: fit-content;
+
+  padding: 25px !important;
+  
+  opacity: 0;
+  transform: translateY(50px);
+  transition-duration: 300ms;
+
+  &--after-open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &--before-close  {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

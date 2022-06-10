@@ -46,14 +46,20 @@ const UILink = styled(Link)`
   text-decoration: none;
 `
 
-export const FloatingButton = ({ to, children }: FloatingButtonProps) => (
+export const Outlined = {}
+
+export const FloatingButton = ({
+  to,
+  children,
+  onClick,
+}: FloatingButtonProps) => (
   <FloatingButtonWrapper>
     {to ? (
-      <Button>
+      <Button onClick={onClick}>
         <UILink to={to}>{children}</UILink>
       </Button>
     ) : (
-      <Button>{children}</Button>
+      <Button onClick={onClick}>{children}</Button>
     )}
   </FloatingButtonWrapper>
 )
@@ -61,4 +67,5 @@ export const FloatingButton = ({ to, children }: FloatingButtonProps) => (
 type FloatingButtonProps = {
   to?: string
   children?: JSX.Element
+  onClick?: () => void
 }
