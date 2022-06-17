@@ -43,6 +43,7 @@ const ModalContent = styled.div<ModalContentProps>`
   transform: ${(props) =>
     props.open ? 'translateY(10vh)' : 'translateY(100vh)'};
   transition-duration: 300ms;
+  overflow: hidden;
 
   @media screen and (max-width: 900px) {
     width: 90vw;

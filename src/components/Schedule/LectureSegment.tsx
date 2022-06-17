@@ -10,13 +10,13 @@ const LectureSegment = styled(Segment)`
   gap: 2px;
   cursor: pointer;
   flex-direction: column;
-  border: 2px solid ${COLOR.WHITE};
-
-  transition-duration: 0.3s;
-
+  border-radius: 0;
+  /* transition-duration: 0.3s; */
+  /* border: 2px solid ${COLOR.WHITE}; */
+  /* 
   &:hover {
     border-color: ${COLOR.PRIMARY};
-  }
+  } */
 `
 
 const FlexDiv = styled.div`
@@ -70,7 +70,9 @@ const TimeTable = ({ timetables }: TimeTableProps) => {
 }
 
 type LectureSegmentProps = {
+  [key: string]: any
   detail?: boolean
+  style?: Record<any, any>
   lecture: LectureInfo
 }
 
@@ -81,9 +83,12 @@ export default ({ detail = true, ...props }: LectureSegmentProps) => {
     openModal(modals.lectureInfoModal, { lecture })
   }
 
-  const { lecture } = props
+  const { lecture, style } = props
   return (
-    <LectureSegment onClick={() => openLectureDetailInfoModal(lecture)}>
+    <LectureSegment
+      {...props}
+      onClick={() => openLectureDetailInfoModal(lecture)}
+    >
       <FlexDiv>
         <Text size={10}>{lecture.name}</Text>
         <Text size={9} color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
