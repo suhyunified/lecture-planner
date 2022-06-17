@@ -8,17 +8,6 @@ export const modals = {
   lectureInfoModal: LectureInfoModal,
 }
 
-const BackDrop = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-  opacity: 0.8;
-  background-color: ${COLOR.BLACK};
-`
-
 const ModalWrapper = styled.div`
   position: fixed;
   top: 0;

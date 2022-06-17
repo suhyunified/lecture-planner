@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Segment } from '@/components/Styled/Segment'
-import { Tab, TabList } from '@/components/Styled/Tab'
+// import { Tab, TabList } from '@/components/Styled/Tab'
 import LectureSegment from '../Schedule/LectureSegment'
 import { LectureInfo } from '@/types/lecture.types'
 import { useState } from 'react'
@@ -315,7 +315,7 @@ export default () => {
   return (
     <CreationLectureOption>
       <TabWrapper>
-        <TabList fluid>
+        {/* <TabList fluid>
           {tabs.map((tab) => (
             <Tab
               active={activeTab === tab.value}
@@ -324,7 +324,7 @@ export default () => {
               {tab.text}
             </Tab>
           ))}
-        </TabList>
+        </TabList> */}
       </TabWrapper>
       <LectureList>
         {lectures.map((lecture: LectureInfo) => (

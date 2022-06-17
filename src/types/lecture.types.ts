@@ -30,7 +30,30 @@ export type LectureInfo = {
 }
 
 export type TimeTableType = {
-  targetDay: string
+  targetDay: keyof typeof DAY_KR
   startTime: string
   endTime: string
 }
+
+export type Schedule = {
+  startTime: string
+  endTime: string
+}
+
+export enum DAY {
+  MON = '월',
+  TUE = '화',
+  WED = '수',
+  THR = '목',
+  FRI = '금',
+}
+
+export enum DAY_KR {
+  월 = 'MON',
+  화 = 'TUE',
+  수 = 'WED',
+  목 = 'THR',
+  금 = 'FRI',
+}
+
+export type Day = keyof DAY

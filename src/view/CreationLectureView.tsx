@@ -1,9 +1,11 @@
 import CreationLectureOption from '@/components/Creation/CreationLectureOption'
-import AddLectureModal from '@/components/Creation/Modal/LectureInfoModal'
+import AddLectureModal from '@/components/Creation/Modal/AddLectureModal'
 import { modals } from '@/components/Modal/Modals'
 import ScheduleTable from '@/components/Schedule/ScheduleTable'
+import { CustomModal } from '@/components/Styled'
 import { Button, FloatingButton } from '@/components/Styled/Button'
 import useModals from '@/hook/useModal'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const CreationLectureView = styled.div`
@@ -32,6 +34,12 @@ const Section = styled.div<SectionProps>`
   }
 `
 export default () => {
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(true)
+  }
+
   return (
     <CreationLectureView>
       <Section>
@@ -39,10 +47,14 @@ export default () => {
       </Section>
       <Section maxWidth="500px">
         <CreationLectureOption></CreationLectureOption>
-        <FloatingButton>
+        <FloatingButton onClick={openModal}>
           <span>강의 추가하기</span>
         </FloatingButton>
       </Section>
+      <AddLectureModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+      ></AddLectureModal>
     </CreationLectureView>
   )
 }

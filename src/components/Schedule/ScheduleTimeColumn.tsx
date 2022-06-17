@@ -17,6 +17,7 @@ const TimeHeader = styled.div`
 const TimeCell = styled.div`
   flex: 1;
 `
+
 export default () => {
   const timeList = [
     '09:00',
