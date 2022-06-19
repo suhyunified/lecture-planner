@@ -51,14 +51,15 @@ type TimeTableProps = {
 const TimeTable = ({ timetables }: TimeTableProps) => {
   return (
     <TimeTableList>
-      {timetables.map((timetable: TimeTableType) => (
-        <TimeTableDiv>
-          <Text size={9}>{timetable.targetDay}</Text>
-          <Text size={9}>{timetable.startTime.slice(0, 5)}</Text>
-          <DividerSpan>-</DividerSpan>
-          <Text size={9}>{timetable.endTime.slice(0, 5)}</Text>
-        </TimeTableDiv>
-      ))}
+      {!!timetables &&
+        timetables.map((timetable: TimeTableType) => (
+          <TimeTableDiv>
+            <Text size={9}>{timetable.targetDay}</Text>
+            <Text size={9}>{timetable.startTime.slice(0, 5)}</Text>
+            <DividerSpan>-</DividerSpan>
+            <Text size={9}>{timetable.endTime.slice(0, 5)}</Text>
+          </TimeTableDiv>
+        ))}
     </TimeTableList>
   )
 }
