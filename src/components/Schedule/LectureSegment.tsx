@@ -9,14 +9,8 @@ const LectureSegment = styled(Segment)`
   display: flex;
   gap: 2px;
   cursor: pointer;
+  min-height: 70px;
   flex-direction: column;
-  border-radius: 0;
-  /* transition-duration: 0.3s; */
-  /* border: 2px solid ${COLOR.WHITE}; */
-  /* 
-  &:hover {
-    border-color: ${COLOR.PRIMARY};
-  } */
 `
 
 const FlexDiv = styled.div`
@@ -51,7 +45,7 @@ const DividerSpan = styled.span`
 `
 
 type TimeTableProps = {
-  timetables: TimeTableType[]
+  timetables?: TimeTableType[]
 }
 
 const TimeTable = ({ timetables }: TimeTableProps) => {
@@ -85,10 +79,7 @@ export default ({ detail = true, ...props }: LectureSegmentProps) => {
 
   const { lecture, style } = props
   return (
-    <LectureSegment
-      {...props}
-      onClick={() => openLectureDetailInfoModal(lecture)}
-    >
+    <LectureSegment {...props}>
       <FlexDiv>
         <Text size={10}>{lecture.name}</Text>
         <Text size={9} color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>

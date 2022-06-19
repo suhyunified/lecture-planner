@@ -36,19 +36,25 @@ type ModalContentProps = {
 
 const ModalContent = styled.div<ModalContentProps>`
   position: relative;
-  min-width: 400px;
+
+  height: auto;
+  max-height: 90vh;
   min-height: 300px;
+  min-width: 400px;
+
+  overflow: hidden;
   border-radius: 20px;
   background-color: #ffffff;
   transform: ${(props) =>
-    props.open ? 'translateY(10vh)' : 'translateY(100vh)'};
+    props.open ? 'translateY(0vh)' : 'translateY(30px)'};
   transition-duration: 300ms;
-  overflow: hidden;
 
   @media screen and (max-width: 900px) {
     width: 90vw;
     height: 90vh;
     border-radius: 20px 20px 0px 0px;
+    transform: ${(props) =>
+      props.open ? 'translateY(5vh)' : 'translateY(100vh)'};
   }
 `
 
@@ -80,7 +86,9 @@ export const CustomModal = ({ showModal, setShowModal, children }: Props) => {
       {isOpen ? (
         <ModalWrapper open={debounce}>
           <Backdrop onClick={close}></Backdrop>
-          <ModalContent open={debounce}>{children}</ModalContent>
+          <ModalContent open={debounce}>
+            <>{children}</>
+          </ModalContent>
         </ModalWrapper>
       ) : null}
     </>

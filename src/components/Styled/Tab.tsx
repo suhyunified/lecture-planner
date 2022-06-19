@@ -46,8 +46,8 @@ export const InnerTab = <T extends string | number>({
 }
 
 type Tab = {
-  value: string | number
-  children: JSX.Element
+  value?: string | number
+  children?: JSX.Element
 }
 
 export const Tab = (props: Tab) => <></>
@@ -66,7 +66,7 @@ const TabListStyle = styled.ul<TabListStyle>`
 
 type TabListProps<T> = {
   children: JSX.Element[]
-  onChange: (v: T) => void
+  onChange?: (v: T) => void
 }
 
 export const TabList = <T extends number | string>({
@@ -77,7 +77,7 @@ export const TabList = <T extends number | string>({
 
   const handleChange = (v: T) => {
     setValue(v)
-    onChange(v)
+    onChange?.(v)
   }
 
   const generateButton = () => {

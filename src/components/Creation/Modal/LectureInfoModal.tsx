@@ -1,4 +1,4 @@
-import { COLOR, Modal, Text } from '@/components/Styled'
+import { COLOR, CustomModal, Modal, Text } from '@/components/Styled'
 import { Button } from '@/components/Styled/Button'
 import { LectureInfo, TimeTableType } from '@/types/lecture.types'
 import { useEffect } from 'react'
@@ -7,9 +7,10 @@ import styled from 'styled-components'
 const LectureInfoModal = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 20px;
 
   gap: 8px;
-  height: auto;
+  height: fit-content;
 `
 
 const Info = styled.div`
@@ -63,7 +64,13 @@ const TimeTable = ({ timetables }: TimeTableProps) => {
   )
 }
 
-export default ({ onSubmit, onClose, lecture }: Props) => {
+export default ({
+  onSubmit,
+  showModal,
+  setShowModal,
+  onClose,
+  lecture,
+}: Props) => {
   const handleClickSubmit = () => {
     onSubmit?.()
   }
@@ -76,12 +83,13 @@ export default ({ onSubmit, onClose, lecture }: Props) => {
   }, [])
 
   return (
-    <Modal>
-      <LectureInfoModal>
+    <CustomModal showModal={showModal} setShowModal={setShowModal}>
+      <></>
+      {/* <LectureInfoModal>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Info>
             <Text weight={700} size={14} color={COLOR.BLACK}>
-              {lecture.name}
+              {lecture?.name}
             </Text>
             <Text weight={700} size={14} color={COLOR.PRIMARY}>
               {lecture?.applyCredit}학점
@@ -89,7 +97,7 @@ export default ({ onSubmit, onClose, lecture }: Props) => {
           </Info>
           <Info>
             <Text color={COLOR.GRAY40} size={14}>
-              {lecture.code}
+              {lecture?.code}
             </Text>
           </Info>
         </div>
@@ -97,13 +105,13 @@ export default ({ onSubmit, onClose, lecture }: Props) => {
           <Text size={12}>교수명</Text>
         </Info>
         <Info>
-          <TimeTable timetables={lecture.timetables ?? []} />
+          <TimeTable timetables={lecture?.timetables ?? []} />
         </Info>
         <Info>
           <Text size={12}>강의실 위치</Text>
         </Info>
         <Info>
-          <Text size={12}>{lecture.targetYear}학년</Text>
+          <Text size={12}>{lecture?.targetYear}학년</Text>
           <Text size={12}>전필</Text>
         </Info>
 
@@ -111,13 +119,15 @@ export default ({ onSubmit, onClose, lecture }: Props) => {
           <Button onClick={handleClickSubmit}>닫기</Button>
           <Button>삭제</Button>
         </ActionsWrapper>
-      </LectureInfoModal>
-    </Modal>
+      </LectureInfoModal> */}
+    </CustomModal>
   )
 }
 
 type Props = {
   onSubmit?: () => void
   onClose?: () => void
-  lecture: LectureInfo
+  showModal: boolean
+  setShowModal: Function
+  lecture?: LectureInfo
 }

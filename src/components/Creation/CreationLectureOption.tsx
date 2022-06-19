@@ -5,6 +5,9 @@ import LectureSegment from '../Schedule/LectureSegment'
 import { LectureInfo } from '@/types/lecture.types'
 import { useState } from 'react'
 import { COLOR } from '../Styled'
+import { Tab, TabList } from '../Styled/Tab'
+import './CreationLectureOption.scss'
+import LectureInfoModal from './Modal/LectureInfoModal'
 
 const CreationLectureOption = styled.div`
   display: flex;
@@ -312,28 +315,47 @@ export default () => {
     },
   ]
 
+  const [openModal, setOpenModal] = useState(false)
+  const [lecture, setLecture] = useState<LectureInfo>()
+
+  const showLectureInfoModal = (lecture: LectureInfo) => {
+    setOpenModal(true)
+    setLecture(lecture)
+  }
+
   return (
     <CreationLectureOption>
       <TabWrapper>
-        {/* <TabList fluid>
-          {tabs.map((tab) => (
-            <Tab
-              active={activeTab === tab.value}
-              onClick={() => setActiveTab(tab.value)}
-            >
-              {tab.text}
-            </Tab>
-          ))}
-        </TabList> */}
+        <TabList>
+          <Tab value={1}>
+            <>필수강의</>
+          </Tab>
+          <Tab value={2}>
+            <>선택강의</>
+          </Tab>
+          <Tab value={3}>
+            <>직접 추가</>
+          </Tab>
+        </TabList>
       </TabWrapper>
+
       <LectureList>
-        {lectures.map((lecture: LectureInfo) => (
+        {lectures.map((lecture: LectureInfo, index) => (
           <LectureSegment
+            key={index}
+            className="creation-lecture-option__lecture"
             detail={activeTab === 1}
             lecture={lecture}
+            onClick={() => showLectureInfoModal(lecture)}
           ></LectureSegment>
         ))}
       </LectureList>
+
+      <LectureInfoModal
+        lecture={lecture}
+        showModal={openModal}
+        setShowModal={setOpenModal}
+      ></LectureInfoModal>
     </CreationLectureOption>
   )
 }

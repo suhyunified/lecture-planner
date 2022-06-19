@@ -7,18 +7,13 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import './AddLectureModal.scss'
 
-// const lectureSegmentStyle = {
-//   borderBottom: `1px solid ${COLOR.PRIMARY}`,
-//   minHeight: '80px',
-//   padding: '20px 0',
-// }
-
 const LectureList = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  height: calc(100%);
-  overflow-x: auto;
+
+  padding: 10px 20px;
+  height: calc(100% - 50px);
+  overflow-y: auto;
 `
 
 export default (props: Props) => {
@@ -290,8 +285,20 @@ export default (props: Props) => {
 
   return (
     <CustomModal showModal={props.showModal} setShowModal={props.setShowModal}>
-      <>
-        <div style={{ position: 'sticky', top: 0, backgroundColor: 'white' }}>
+      <div
+        style={{
+          height: '90vh',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            top: 0,
+            height: '50px',
+            position: 'sticky',
+            backgroundColor: 'white',
+          }}
+        >
           <TabList onChange={changeTab}>
             <Tab value={1}>
               <>필수강의</>
@@ -312,7 +319,7 @@ export default (props: Props) => {
             ></LectureSegment>
           ))}
         </LectureList>
-      </>
+      </div>
     </CustomModal>
   )
 }
