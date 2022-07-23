@@ -6,7 +6,7 @@ import { CustomModal } from '@/components/Styled'
 import { Button, FloatingButton } from '@/components/Styled/Button'
 import useModals from '@/hook/useModal'
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const CreationLectureView = styled.div`
   display: flex;

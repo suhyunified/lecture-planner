@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { DAY_KR, LectureInfo } from '@/types/lecture.types'
 import { COLOR } from '../Styled'
 import dayjs from 'dayjs'

@@ -1,3 +1,8 @@
+export type University = {
+  id: number
+  text: string
+}
+
 export type LectureInfo = {
   id: number
 

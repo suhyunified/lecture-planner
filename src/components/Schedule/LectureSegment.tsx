@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { Segment } from '../Styled/Segment'
 import { LectureInfo, TimeTableType } from '@/types/lecture.types'
 import { COLOR, Text, WEIGHT } from '../Styled'
@@ -52,8 +52,8 @@ const TimeTable = ({ timetables }: TimeTableProps) => {
   return (
     <TimeTableList>
       {!!timetables &&
-        timetables.map((timetable: TimeTableType) => (
-          <TimeTableDiv>
+        timetables.map((timetable: TimeTableType, index) => (
+          <TimeTableDiv key={index}>
             <Text size={9}>{timetable.targetDay}</Text>
             <Text size={9}>{timetable.startTime.slice(0, 5)}</Text>
             <DividerSpan>-</DividerSpan>

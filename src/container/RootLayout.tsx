@@ -1,15 +1,13 @@
 import Modals from '@/components/Modal/Modals'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const RootDiv = styled.div`
   display: flex;
-
   justify-content: center;
 
   width: 100vw;
   height: 100vh;
   overflow: overlay;
-
   background-color: var(--background);
 `
 
@@ -23,7 +21,7 @@ const InnerDiv = styled.div`
   width: 100vw;
   height: fit-content;
 
-  max-width: 1400px;
+  max-width: 500px;
   min-height: 100vh;
 `
 

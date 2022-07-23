@@ -1,9 +1,9 @@
 import { Route, Outlet } from 'react-router-dom'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import LayoutHeader from '@/components/Layout/LayoutHeader'
-import CreationOptionView from '@/view/CreationOptionView'
+import CreationOptionView from '@/view/PlanningOptionView'
 
-const CreationLayout = styled.div`
+const PlanningContainer = styled.div`
   display: flex;
   position: relative;
 
@@ -14,9 +14,9 @@ const CreationLayout = styled.div`
 
 export default () => {
   return (
-    <CreationLayout>
+    <PlanningContainer>
       <LayoutHeader></LayoutHeader>
       <Outlet />
-    </CreationLayout>
+    </PlanningContainer>
   )
 }

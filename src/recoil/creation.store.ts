@@ -1,13 +1,12 @@
+import { PlanningOptions, PlanningState } from '@/types/planning.types'
 import { atom } from 'recoil'
 
-const CreationLState = atom({
-  key: 'creationState',
+export const planningOptionState = atom<PlanningOptions>({
+  key: 'planningOptionState',
   default: {
-    lectures: {
-      specific: [],
-      nonSpecific: [],
-      custom: [],
-    },
-    options: {},
+    universityId: 0,
+    departmentId: 0,
+    maxCredit: 0,
+    minCredit: 0,
   },
 })

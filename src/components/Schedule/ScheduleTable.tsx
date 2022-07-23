@@ -1,7 +1,7 @@
 import { useTimeTable } from '@/hook'
 import { DAY_KR, LectureInfo } from '@/types/lecture.types'
 import { useEffect } from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import { COLOR } from '../Styled'
 import ScheduleDayColumn from './ScheduleDayColumn'

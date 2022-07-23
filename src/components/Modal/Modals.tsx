@@ -1,6 +1,6 @@
 import { ModalsDispatchContext, ModalsStateContext } from '@/context'
 import { useContext, useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import LectureInfoModal from '../Creation/Modal/LectureInfoModal'
 import { COLOR } from '../Styled'
 

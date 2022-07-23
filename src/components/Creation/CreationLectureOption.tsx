@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { Segment } from '@/components/Styled/Segment'
 // import { Tab, TabList } from '@/components/Styled/Tab'
 import LectureSegment from '../Schedule/LectureSegment'

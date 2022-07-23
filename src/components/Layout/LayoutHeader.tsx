@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { COLOR } from '../Styled'
 
 const LayoutHeader = styled.div`
@@ -12,7 +12,7 @@ const LayoutHeader = styled.div`
   width: 100%;
   height: 50px;
   padding: 16px 0;
-  z-index: 1;
+  /* z-index: 1; */
 `
 
 const BackButton = styled.a`

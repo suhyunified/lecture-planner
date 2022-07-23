@@ -2,7 +2,7 @@ import { COLOR, CustomModal, Modal, Text } from '@/components/Styled'
 import { Button } from '@/components/Styled/Button'
 import { LectureInfo, TimeTableType } from '@/types/lecture.types'
 import { useEffect } from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const LectureInfoModal = styled.div`
   display: flex;
@@ -52,8 +52,8 @@ type TimeTableProps = {
 const TimeTable = ({ timetables }: TimeTableProps) => {
   return (
     <TimeTableList>
-      {timetables.map((timetable: TimeTableType) => (
-        <TimeTableDiv>
+      {timetables.map((timetable: TimeTableType, index: number) => (
+        <TimeTableDiv key={`timetable-${index}`}>
           <Text size={12}>{timetable.targetDay}</Text>
           <Text size={12}>{timetable.startTime.slice(0, 5)}</Text>
           <DividerSpan>-</DividerSpan>
