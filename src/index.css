@@ -13,7 +13,7 @@
   --lecture1-red: #ed7272;
 
   --white: #ffffff;
-  --background: #f7f7f7;
+  --background: var(--white);
   --gray5: #efefef;
   --gray10: #e1e1e1;
   --gray20: #b2b2b2;

@@ -7,11 +7,14 @@ import { Button, FloatingButton } from '@/components/Styled/Button'
 import useModals from '@/hook/useModal'
 import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
+import { Box, Portal } from '@chakra-ui/react'
 
 const CreationLectureView = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 20px;
   height: 100%;
+  overflow-y: overlay;
 
   @media screen and (max-width: 900px) {
     flex-direction: column;
@@ -41,20 +44,36 @@ export default () => {
   }
 
   return (
-    <CreationLectureView>
-      <Section>
-        <ScheduleTable></ScheduleTable>
-      </Section>
-      <Section maxWidth="500px">
-        <CreationLectureOption></CreationLectureOption>
-        <FloatingButton onClick={openModal}>
-          <span>강의 추가하기</span>
-        </FloatingButton>
-      </Section>
-      <AddLectureModal
-        showModal={showModal}
-        setShowModal={setShowModal}
-      ></AddLectureModal>
-    </CreationLectureView>
+    <>
+      <CreationLectureView>
+        <Section>
+          <ScheduleTable></ScheduleTable>
+        </Section>
+        <Section>
+          <CreationLectureOption></CreationLectureOption>
+        </Section>
+        <AddLectureModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+        ></AddLectureModal>
+      </CreationLectureView>
+
+      <Box
+        as="button"
+        fontSize={16}
+        textColor="white"
+        fontWeight="bold"
+        borderRadius={33}
+        backgroundColor="primary"
+        position="absolute"
+        width="90%"
+        bottom="50px"
+        paddingY="16px"
+        paddingX="18px"
+        onClick={openModal}
+      >
+        강의 추가하기
+      </Box>
+    </>
   )
 }

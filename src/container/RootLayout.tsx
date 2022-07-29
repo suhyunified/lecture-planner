@@ -19,7 +19,7 @@ const InnerDiv = styled.div`
   border-right: 1px solid;
 
   width: 100vw;
-  height: fit-content;
+  height: 100%;
 
   max-width: 500px;
   min-height: 100vh;

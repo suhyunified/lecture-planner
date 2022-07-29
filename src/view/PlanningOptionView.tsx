@@ -14,13 +14,22 @@ const PlanningOptionLayout = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: calc(100% - 50px);
 `
 
 const PlanningTitleBox = styled.div`
   width: 100%;
   margin-bottom: 80px;
+`
+
+const LinkButton = styled(Link)`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 48px;
+
+  width: 100%;
 `
 
 export default () => {
@@ -32,7 +41,7 @@ export default () => {
         </Text>
       </PlanningTitleBox>
       <PlanningOption></PlanningOption>
-      <Link style={{ width: '100%' }} to="/planning/lecture">
+      <LinkButton to="/planning/lecture">
         <Box
           as="button"
           borderRadius={33}
@@ -48,7 +57,7 @@ export default () => {
         >
           옵션 설정 완료
         </Box>
-      </Link>
+      </LinkButton>
     </PlanningOptionLayout>
   )
 }

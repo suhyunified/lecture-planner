@@ -41,8 +41,6 @@ export default ({}: Props) => {
     },
   ]
 
-  const [department, setDepartment] = useState<number>()
-
   const [options, setOptions] = useState<PlanningOptions>({
     universityId: 0,
     departmentId: 0,
@@ -50,11 +48,17 @@ export default ({}: Props) => {
     minCredit: 0,
   })
 
-  const onChangeHandler = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+  const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setOptions((state) => ({ ...state, [name]: value }))
+  }
+
+  const onChangeNumberInputHanlder = (
+    e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { name, value } = e.target
-    setOptions((state) => ({ ...state, [name]: +value ?? value }))
+    if (isNaN(+value)) return
+    setOptions((state) => ({ ...state, [name]: +value }))
   }
 
   return (
@@ -120,7 +124,7 @@ export default ({}: Props) => {
           textColor="primary"
           focusBorderColor="primary"
           value={options.minCredit}
-          onChange={onChangeHandler}
+          onChange={onChangeNumberInputHanlder}
         />
         학점, 최대
         <Input
@@ -131,7 +135,7 @@ export default ({}: Props) => {
           textColor="primary"
           focusBorderColor="primary"
           value={options.maxCredit}
-          onChange={onChangeHandler}
+          onChange={onChangeNumberInputHanlder}
         />
         학점을
       </OptionBox>
