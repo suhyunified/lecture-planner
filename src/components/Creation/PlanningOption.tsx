@@ -7,7 +7,7 @@ import { css } from '@emotion/react'
 import { ReactElement, ReactEventHandler, useState } from 'react'
 import { universityCandidates } from '@/fixtures'
 
-const PlanningOption = styled.div`
+const PlanningOptionLayout = styled.div`
   display: flex;
   width: min(100%, 500px);
   padding: 30px 0;
@@ -62,7 +62,7 @@ export default ({}: Props) => {
   }
 
   return (
-    <PlanningOption>
+    <PlanningOptionLayout>
       <OptionBox>
         저는
         <div>
@@ -140,7 +140,7 @@ export default ({}: Props) => {
         학점을
       </OptionBox>
       <OptionBox>수강할 예정입니다.</OptionBox>
-    </PlanningOption>
+    </PlanningOptionLayout>
   )
 }
 

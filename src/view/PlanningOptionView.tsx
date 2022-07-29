@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Text } from '@/components/Styled'
+
 import { FloatingButton } from '@/components/Styled/Button'
 import { useState } from 'react'
 import { useRecoilValue } from 'recoil'
@@ -8,7 +8,7 @@ import PlanningOption from '@/components/Creation/PlanningOption'
 import { Box } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
-const PlanningOptionLayout = styled.div`
+const PlanningOptionView = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,11 +16,6 @@ const PlanningOptionLayout = styled.div`
   width: 100%;
   height: 100%;
   min-height: calc(100% - 50px);
-`
-
-const PlanningTitleBox = styled.div`
-  width: 100%;
-  margin-bottom: 80px;
 `
 
 const LinkButton = styled(Link)`
@@ -34,12 +29,7 @@ const LinkButton = styled(Link)`
 
 export default () => {
   return (
-    <PlanningOptionLayout>
-      <PlanningTitleBox>
-        <Text size={24} weight={700}>
-          시간표 생성하기
-        </Text>
-      </PlanningTitleBox>
+    <PlanningOptionView>
       <PlanningOption></PlanningOption>
       <LinkButton to="/planning/lecture">
         <Box
@@ -58,6 +48,6 @@ export default () => {
           옵션 설정 완료
         </Box>
       </LinkButton>
-    </PlanningOptionLayout>
+    </PlanningOptionView>
   )
 }

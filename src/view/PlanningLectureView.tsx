@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { Box, Portal } from '@chakra-ui/react'
 
-const CreationLectureView = styled.div`
+const PlanningLectureView = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -18,22 +18,6 @@ const CreationLectureView = styled.div`
 
   @media screen and (max-width: 900px) {
     flex-direction: column;
-  }
-`
-
-type SectionProps = {
-  maxWidth?: string
-}
-
-const Section = styled.div<SectionProps>`
-  display: flex;
-  justify-content: center;
-  flex: 1;
-  height: 100%;
-  max-width: ${(props) => props.maxWidth ?? 'none'};
-
-  @media screen and (max-width: 900px) {
-    max-width: none;
   }
 `
 export default () => {
@@ -45,35 +29,19 @@ export default () => {
 
   return (
     <>
-      <CreationLectureView>
-        <Section>
-          <ScheduleTable></ScheduleTable>
-        </Section>
-        <Section>
-          <CreationLectureOption></CreationLectureOption>
-        </Section>
+      <PlanningLectureView>
+        <ScheduleTable></ScheduleTable>
+
+        <CreationLectureOption></CreationLectureOption>
         <AddLectureModal
           showModal={showModal}
           setShowModal={setShowModal}
         ></AddLectureModal>
-      </CreationLectureView>
+      </PlanningLectureView>
 
-      <Box
-        as="button"
-        fontSize={16}
-        textColor="white"
-        fontWeight="bold"
-        borderRadius={33}
-        backgroundColor="primary"
-        position="absolute"
-        width="90%"
-        bottom="50px"
-        paddingY="16px"
-        paddingX="18px"
-        onClick={openModal}
-      >
-        강의 추가하기
-      </Box>
+      <FloatingButton onClick={openModal} bottom={50}>
+        <p>강의 추가하기</p>
+      </FloatingButton>
     </>
   )
 }

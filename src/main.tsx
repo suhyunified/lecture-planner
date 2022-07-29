@@ -7,7 +7,7 @@ import './index.css'
 import RootLayout from '@/container/RootLayout'
 import PlanningContainer from '@/container/PlanningContainer'
 import PlanningOptionView from '@/view/PlanningOptionView'
-import CreationLectureView from '@/view/CreationLectureView'
+import PlanningLectureView from '@/view/PlanningLectureView'
 import { RecoilRoot } from 'recoil'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
@@ -28,7 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="home"></Route>
                 <Route path="planning" element={<PlanningContainer />}>
                   <Route path="option" element={<PlanningOptionView />} />
-                  <Route path="lecture" element={<CreationLectureView />} />
+                  <Route path="lecture" element={<PlanningLectureView />} />
                 </Route>
               </Routes>
             </BrowserRouter>
