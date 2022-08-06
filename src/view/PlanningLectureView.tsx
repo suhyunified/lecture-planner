@@ -1,4 +1,4 @@
-import CreationLectureOption from '@/components/Creation/CreationLectureOption'
+import PlanningAddedLectures from '@/components/Creation/PlanningAddedLectures'
 import AddLectureModal from '@/components/Creation/Modal/AddLectureModal'
 import { modals } from '@/components/Modal/Modals'
 import ScheduleTable from '@/components/Schedule/ScheduleTable'
@@ -10,16 +10,22 @@ import styled from '@emotion/styled'
 import { Box, Portal } from '@chakra-ui/react'
 
 const PlanningLectureView = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
   height: 100%;
-  overflow-y: overlay;
 
   @media screen and (max-width: 900px) {
     flex-direction: column;
   }
 `
+
+const StickyLayout = styled.div`
+  position: sticky;
+  top: 0;
+`
+
 export default () => {
   const [showModal, setShowModal] = useState(false)
 
@@ -31,8 +37,9 @@ export default () => {
     <>
       <PlanningLectureView>
         <ScheduleTable></ScheduleTable>
-
-        <CreationLectureOption></CreationLectureOption>
+        <StickyLayout>
+          <PlanningAddedLectures></PlanningAddedLectures>
+        </StickyLayout>
         <AddLectureModal
           showModal={showModal}
           setShowModal={setShowModal}

@@ -8,13 +8,11 @@ import ScheduleDayColumn from './ScheduleDayColumn'
 import ScheduleTimeColumn from './ScheduleTimeColumn'
 
 const ScheduleTableWrapper = styled.div`
-  position: sticky;
-  top: 70px;
-
   flex: 1;
   display: flex;
   height: fit-content;
 `
+
 const ScheduleTable = styled.div`
   display: flex;
   gap: 1px;

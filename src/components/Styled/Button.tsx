@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { COLOR } from '.'
-import { Box, InputLeftElement, propNames } from '@chakra-ui/react'
+import { Box, InputLeftElement, position, propNames } from '@chakra-ui/react'
 
 type Button = {
   width?: string | number
@@ -87,7 +87,7 @@ type FloatingButtonWrapperProps = {
   bottom?: number
 }
 const FloatingButtonWrapper = styled.div<FloatingButtonWrapperProps>`
-  position: absolute;
+  position: sticky;
   display: flex;
   justify-content: center;
 
@@ -108,7 +108,6 @@ export const FloatingButton = ({
   left,
   right,
   bottom,
-  to,
   ...props
 }: FloatingButtonProps) => {
   const positionAttr = {
@@ -119,7 +118,7 @@ export const FloatingButton = ({
   }
 
   const genButton = () => {
-    const Component = to ? LinkButton : BaseButton
+    const Component = props.to ? LinkButton : BaseButton
     return <Component {...props}>{children}</Component>
   }
 

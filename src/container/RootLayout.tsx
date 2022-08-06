@@ -7,22 +7,21 @@ const RootDiv = styled.div`
 
   width: 100vw;
   height: 100vh;
+  padding: 0 20px;
   overflow: overlay;
   background-color: var(--background);
 `
 
 const InnerDiv = styled.div`
-  display: flex;
   position: relative;
-  border-color: black;
+  /* border-color: black; */
   border-left: 1px solid;
   border-right: 1px solid;
 
-  width: 100vw;
-  height: 100%;
-
   max-width: 500px;
   min-height: 100vh;
+  width: 100vw;
+  height: 100%;
 `
 
 const RootLayout = ({ children }: Props) => {

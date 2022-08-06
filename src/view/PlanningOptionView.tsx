@@ -12,42 +12,23 @@ const PlanningOptionView = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   width: 100%;
   height: 100%;
-  min-height: calc(100% - 50px);
-`
-
-const LinkButton = styled(Link)`
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 48px;
-
-  width: 100%;
+  background-color: red;
 `
 
 export default () => {
   return (
-    <PlanningOptionView>
-      <PlanningOption></PlanningOption>
-      <LinkButton to="/planning/lecture">
-        <Box
-          as="button"
-          borderRadius={33}
-          backgroundColor="primary"
-          textColor="white"
-          fontSize={16}
-          paddingY="16px"
-          paddingX="18px"
-          fontWeight="bold"
-          width="90%"
-          position="absolute"
-          bottom="50px"
-        >
-          옵션 설정 완료
-        </Box>
-      </LinkButton>
-    </PlanningOptionView>
+    <>
+      <PlanningOptionView>
+        <PlanningOption></PlanningOption>
+      </PlanningOptionView>
+
+      <FloatingButton to="/planning/lecture" bottom={50}>
+        <p>옵션 설정 완료</p>
+      </FloatingButton>
+    </>
   )
 }

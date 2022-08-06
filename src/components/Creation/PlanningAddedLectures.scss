@@ -1,12 +1,12 @@
-.creation-lecture-option{
+.planning-added-lectures {
   &__lecture {
     border: 2px solid white;
     border-radius: 10px;
-  
+    background-color: var(--gray5);
     transition-duration: 300ms;
 
     &:hover {
-      border-color: var(--primary)
+      border-color: var(--primary);
     }
   }
 }

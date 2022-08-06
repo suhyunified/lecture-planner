@@ -15,6 +15,7 @@ const LectureSegment = styled(Segment)`
 
 const FlexDiv = styled.div`
   display: flex;
+  color: var(--gray60);
   justify-content: space-between;
 `
 
@@ -23,9 +24,9 @@ const TimeTableDiv = styled.li`
   align-items: center;
 
   height: 12px;
-  font-size: 9;
+  font-size: 10px;
   list-style: none;
-  color: ${COLOR.GRAY40};
+  color: var(--gray60);
 `
 const TimeTableList = styled.ul`
   display: flex;
@@ -35,8 +36,8 @@ const TimeTableList = styled.ul`
 const LectureInfoDiv = styled.div`
   display: flex;
   column-gap: 8px;
-  font-size: 9px;
-  color: ${COLOR.GRAY40};
+  font-size: 10px;
+  color: var(--gray60);
 `
 
 const DividerSpan = styled.span`
@@ -54,10 +55,10 @@ const TimeTable = ({ timetables }: TimeTableProps) => {
       {!!timetables &&
         timetables.map((timetable: TimeTableType, index) => (
           <TimeTableDiv key={index}>
-            <Text size={9}>{timetable.targetDay}</Text>
-            <Text size={9}>{timetable.startTime.slice(0, 5)}</Text>
+            <Text>{timetable.targetDay}</Text>
+            <Text>{timetable.startTime.slice(0, 5)}</Text>
             <DividerSpan>-</DividerSpan>
-            <Text size={9}>{timetable.endTime.slice(0, 5)}</Text>
+            <Text>{timetable.endTime.slice(0, 5)}</Text>
           </TimeTableDiv>
         ))}
     </TimeTableList>
@@ -82,8 +83,10 @@ export default ({ detail = true, ...props }: LectureSegmentProps) => {
   return (
     <LectureSegment {...props}>
       <FlexDiv>
-        <Text size={10}>{lecture.name}</Text>
-        <Text size={9} color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
+        <Text size={11} color="#000000" weight={700}>
+          {lecture.name}
+        </Text>
+        <Text size={10} color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
           {lecture.applyCredit}학점
         </Text>
       </FlexDiv>

@@ -6,10 +6,10 @@ import { LectureInfo } from '@/types/lecture.types'
 import { useState } from 'react'
 import { COLOR } from '../Styled'
 import { Tab, TabList } from '../Styled/Tab'
-import './CreationLectureOption.scss'
+import './PlanningAddedLectures.scss'
 import LectureInfoModal from './Modal/LectureInfoModal'
 
-const CreationLectureOption = styled.div`
+const PlanningAddedLectures = styled.div`
   display: flex;
   flex-direction: column;
   width: min(100%, 500px);
@@ -17,9 +17,9 @@ const CreationLectureOption = styled.div`
 
 const TabWrapper = styled.div`
   position: sticky;
-  top: 49px;
+  top: 0;
   padding-top: 20px;
-  background-color: ${COLOR.BACKGROUND};
+  background-color: var(--background);
 `
 
 const LectureList = styled.div`
@@ -324,7 +324,7 @@ export default () => {
   }
 
   return (
-    <CreationLectureOption>
+    <PlanningAddedLectures>
       <TabWrapper>
         <TabList>
           <Tab value={1}>
@@ -338,24 +338,22 @@ export default () => {
           </Tab>
         </TabList>
       </TabWrapper>
-
       <LectureList>
         {lectures.map((lecture: LectureInfo, index) => (
           <LectureSegment
             key={index}
-            className="creation-lecture-option__lecture"
+            className="planning-added-lectures__lecture"
             detail={activeTab === 1}
             lecture={lecture}
             onClick={() => showLectureInfoModal(lecture)}
           ></LectureSegment>
         ))}
       </LectureList>
-
       <LectureInfoModal
         lecture={lecture}
         showModal={openModal}
         setShowModal={setOpenModal}
       ></LectureInfoModal>
-    </CreationLectureOption>
+    </PlanningAddedLectures>
   )
 }
