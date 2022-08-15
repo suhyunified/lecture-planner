@@ -2,19 +2,15 @@ import styled from 'styled-components'
 import { Segment } from '../Styled/Segment'
 import { LectureInfo, TimeTableType } from '@/types/lecture.types'
 import { COLOR, Text, WEIGHT } from '../Styled'
+import { modals } from '../Modal/Modals'
+import useModals from '@/hook/useModal'
 
 const LectureSegment = styled(Segment)`
   display: flex;
   gap: 2px;
   cursor: pointer;
+  min-height: 70px;
   flex-direction: column;
-  border: 2px solid ${COLOR.WHITE};
-
-  transition-duration: 0.3s;
-
-  &:hover {
-    border-color: ${COLOR.PRIMARY};
-  }
 `
 
 const FlexDiv = styled.div`
@@ -49,33 +45,42 @@ const DividerSpan = styled.span`
 `
 
 type TimeTableProps = {
-  timetables: TimeTableType[]
+  timetables?: TimeTableType[]
 }
 
 const TimeTable = ({ timetables }: TimeTableProps) => {
   return (
     <TimeTableList>
-      {timetables.map((timetable: TimeTableType) => (
-        <TimeTableDiv>
-          <Text size={9}>{timetable.targetDay}</Text>
-          <Text size={9}>{timetable.startTime.slice(0, 5)}</Text>
-          <DividerSpan>-</DividerSpan>
-          <Text size={9}>{timetable.endTime.slice(0, 5)}</Text>
-        </TimeTableDiv>
-      ))}
+      {!!timetables &&
+        timetables.map((timetable: TimeTableType) => (
+          <TimeTableDiv>
+            <Text size={9}>{timetable.targetDay}</Text>
+            <Text size={9}>{timetable.startTime.slice(0, 5)}</Text>
+            <DividerSpan>-</DividerSpan>
+            <Text size={9}>{timetable.endTime.slice(0, 5)}</Text>
+          </TimeTableDiv>
+        ))}
     </TimeTableList>
   )
 }
 
 type LectureSegmentProps = {
+  [key: string]: any
   detail?: boolean
+  style?: Record<any, any>
   lecture: LectureInfo
 }
 
 export default ({ detail = true, ...props }: LectureSegmentProps) => {
-  const { lecture } = props
+  const { openModal, closeModal } = useModals()
+  const openLectureDetailInfoModal = (lecture: LectureInfo) => {
+    // @ts-ignore
+    openModal(modals.lectureInfoModal, { lecture })
+  }
+
+  const { lecture, style } = props
   return (
-    <LectureSegment>
+    <LectureSegment {...props}>
       <FlexDiv>
         <Text size={10}>{lecture.name}</Text>
         <Text size={9} color={COLOR.PRIMARY} weight={WEIGHT.BOLD}>
@@ -91,7 +96,9 @@ export default ({ detail = true, ...props }: LectureSegmentProps) => {
             {detail && lecture.classNumber && '-' + lecture.classNumber}
           </Text>
         </LectureInfoDiv>
-        {detail && <TimeTable timetables={lecture.timetables}></TimeTable>}
+        {detail && (
+          <TimeTable timetables={lecture.timetables ?? []}></TimeTable>
+        )}
       </FlexDiv>
     </LectureSegment>
   )

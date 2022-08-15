@@ -1,41 +1,25 @@
-import styled from 'styled-components'
-import { Segment } from '@/components/Styled/Segment'
-// import { Tab, TabList } from '@/components/Styled/Tab'
-import LectureSegment from '../Schedule/LectureSegment'
+import LectureSegment from '@/components/Schedule/LectureSegment'
+import { COLOR, CustomModal } from '@/components/Styled'
+import { Tab, TabList } from '@/components/Styled/Tab'
 import { LectureInfo } from '@/types/lecture.types'
+
 import { useState } from 'react'
-import { COLOR } from '../Styled'
-import { Tab, TabList } from '../Styled/Tab'
-import './CreationLectureOption.scss'
-import LectureInfoModal from './Modal/LectureInfoModal'
-
-const CreationLectureOption = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: min(100%, 500px);
-`
-
-const TabWrapper = styled.div`
-  position: sticky;
-  top: 49px;
-  padding-top: 20px;
-  background-color: ${COLOR.BACKGROUND};
-`
+import styled from 'styled-components'
+import './AddLectureModal.scss'
 
 const LectureList = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 
-  gap: 8px;
-
-  padding: 8px 0 90px 0;
+  padding: 10px 20px;
+  height: calc(100% - 50px);
+  overflow-y: auto;
 `
 
-export default () => {
-  const dummy = {
-    totalCount: 3193,
-    currentPage: 0,
+export default (props: Props) => {
+  const [tab, setTab] = useState(1)
+  const changeTab = (v: number) => {
+    console.log(v)
   }
 
   const lectures: LectureInfo[] = [
@@ -299,63 +283,48 @@ export default () => {
     },
   ]
 
-  const [activeTab, setActiveTab] = useState<number>(1)
-  const tabs = [
-    {
-      text: '필수 강의',
-      value: 1,
-    },
-    {
-      text: '선택 강의',
-      value: 2,
-    },
-    {
-      text: '직접 추가',
-      value: 3,
-    },
-  ]
-
-  const [openModal, setOpenModal] = useState(false)
-  const [lecture, setLecture] = useState<LectureInfo>()
-
-  const showLectureInfoModal = (lecture: LectureInfo) => {
-    setOpenModal(true)
-    setLecture(lecture)
-  }
-
   return (
-    <CreationLectureOption>
-      <TabWrapper>
-        <TabList>
-          <Tab value={1}>
-            <>필수강의</>
-          </Tab>
-          <Tab value={2}>
-            <>선택강의</>
-          </Tab>
-          <Tab value={3}>
-            <>직접 추가</>
-          </Tab>
-        </TabList>
-      </TabWrapper>
-
-      <LectureList>
-        {lectures.map((lecture: LectureInfo, index) => (
-          <LectureSegment
-            key={index}
-            className="creation-lecture-option__lecture"
-            detail={activeTab === 1}
-            lecture={lecture}
-            onClick={() => showLectureInfoModal(lecture)}
-          ></LectureSegment>
-        ))}
-      </LectureList>
-
-      <LectureInfoModal
-        lecture={lecture}
-        showModal={openModal}
-        setShowModal={setOpenModal}
-      ></LectureInfoModal>
-    </CreationLectureOption>
+    <CustomModal showModal={props.showModal} setShowModal={props.setShowModal}>
+      <div
+        style={{
+          height: '90vh',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            top: 0,
+            height: '50px',
+            position: 'sticky',
+            backgroundColor: 'white',
+          }}
+        >
+          <TabList onChange={changeTab}>
+            <Tab value={1}>
+              <>필수강의</>
+            </Tab>
+            <Tab value={2}>
+              <>선택강의</>
+            </Tab>
+            <Tab value={3}>
+              <>직접 추가</>
+            </Tab>
+          </TabList>
+        </div>
+        <LectureList>
+          {lectures.map((lecture) => (
+            <LectureSegment
+              className="add-lecture-modal__segment"
+              lecture={lecture}
+            ></LectureSegment>
+          ))}
+        </LectureList>
+      </div>
+    </CustomModal>
   )
+}
+
+type Props = {
+  showModal: boolean
+  setShowModal: Function
 }

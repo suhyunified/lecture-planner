@@ -1,0 +1,25 @@
+.add-lecture-modal{
+
+  &__wrapper {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    overflow:hidden;
+  }
+
+  &__segment {
+    border-bottom: 1px solid var(--primary);
+    min-height: 80px;
+    padding: 20px 0;
+  
+    transition-duration: 300ms;
+  
+    &:hover {
+      background-color: #f8f8f8;
+    }
+  
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

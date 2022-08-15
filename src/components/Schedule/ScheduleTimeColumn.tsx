@@ -5,7 +5,6 @@ const ScheduleTimeColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1px;
-  z-index: 1;
 
   width: 30px;
   font-size: 10px;
@@ -18,6 +17,7 @@ const TimeHeader = styled.div`
 const TimeCell = styled.div`
   flex: 1;
 `
+
 export default () => {
   const timeList = [
     '09:00',
@@ -31,6 +31,7 @@ export default () => {
     '17:00',
     '18:00',
   ]
+
   return (
     <ScheduleTimeColumn>
       <TimeHeader></TimeHeader>
