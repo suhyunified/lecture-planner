@@ -1,0 +1,36 @@
+name: On Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Build & Push Docker Image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: Login to AWS ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        id: ecr-login
+
+      - name: Build & Push Docker Image to AWS ECR
+        env:
+          ECR_REGISTRY: ${{ steps.ecr-login.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t lecture-planner-web:latest .
+          docker tag lecture-planner-web:latest ${{ env.ECR_REGISTRY }}/lecture-planner-web:latest
+          docker tag lecture-planner-web:latest ${{ env.ECR_REGISTRY }}/lecture-planner-web:${{ env.IMAGE_TAG }}
+          docker push ${{ env.ECR_REGISTRY }}/lecture-planner-web:latest
+          docker push ${{ env.ECR_REGISTRY }}/lecture-planner-web:${{ env.IMAGE_TAG }}
